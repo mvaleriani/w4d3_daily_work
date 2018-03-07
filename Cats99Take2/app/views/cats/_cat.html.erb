@@ -1,0 +1,12 @@
+<ul>
+  <% if type == :index %>
+    <li><%= link_to cat.name, cat_url(cat) %></li>
+  <% elsif type == :show %>
+    <li> Name: <%= cat.name %> </li>
+    <li> Color: <%= cat.color %> </li>
+    <li> Birth Date: <%= cat.birth_date %> </li>
+    <li> Sex: <%= cat.sex %> </li>
+    <p> Description: <%= cat.description %> </p>
+
+  <%end%>
+</ul>
