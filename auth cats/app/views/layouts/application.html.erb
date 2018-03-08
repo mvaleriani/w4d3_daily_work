@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OkCatpid</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <% if logged_in? %>
+      <p> Logged in as <%= current_user.username %>
+        <form action="<%= session_url %>" method="POST"/>
+          <input type="hidden" name="_method" value="DELETE" />
+          <button>Log Out</button>
+        </form>
+      </p>
+    <%else%>
+        <form action="<%= new_session_url %>" method="GET"/>
+          <button>Log In</button>
+        </form>
+    <% end %>
+
+    <%if flash[:success].present?%>
+        <%= flash[:success] %>
+    <%end%>
+    <%= yield %>
+  </body>
+</html>
